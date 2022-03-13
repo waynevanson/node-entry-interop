@@ -3,4 +3,5 @@ import { Config } from "@jest/types"
 export default {
   preset: "ts-jest",
   testEnvironment: "node",
-} as Config.InitialProjectOptions
+  coverageThreshold: { global: 100 },
+} as Config.InitialOptions
