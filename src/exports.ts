@@ -39,3 +39,8 @@ export type Exports =
   | RootRelativePath
   | ExportConditional
   | ExportSubpathConditional
+
+// read json file, decode,
+// check if real file is there
+// check if proxy can be placed
+// skip if proxy is same as entry point
