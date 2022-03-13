@@ -5,6 +5,8 @@ specifiers:
   '@types/node': ^17.0.21
   fp-ts: ^2.11.8
   fp-ts-contrib: ^0.1.26
+  fp-ts-node: ^6.0.0
+  fp-ts-quickcheck: ^0.2.0
   io-ts: ^2.2.16
   jest: ^27.5.1
   monocle-ts: ^2.3.12
@@ -17,6 +19,8 @@ specifiers:
 dependencies:
   fp-ts: 2.11.8
   fp-ts-contrib: 0.1.26_fp-ts@2.11.8
+  fp-ts-node: 6.0.0_715dae4bcc1fc445199ce821d5ba655c
+  fp-ts-quickcheck: 0.2.0_newtype-ts@0.3.5
   io-ts: 2.2.16_fp-ts@2.11.8
   monocle-ts: 2.3.12_fp-ts@2.11.8
   newtype-ts: 0.3.5_fp-ts@2.11.8+monocle-ts@2.3.12
@@ -596,6 +600,23 @@ packages:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
+
+  /@no-day/fp-ts-generators/0.1.0-rc.4_fp-ts@2.11.8:
+    resolution: {integrity: sha512-GOGGhDIB3Ff39WtwwVk2RzeOEWqe7oF3LjpFjJ5f68MbnTaptZX6oBk80+O+N9InOrlYDj9rPr2V9m3K34q/uA==}
+    peerDependencies:
+      fp-ts: ^2.9.5
+    dependencies:
+      '@no-day/fp-ts-lcg': 1.0.0_fp-ts@2.11.8
+      fp-ts: 2.11.8
+    dev: false
+
+  /@no-day/fp-ts-lcg/1.0.0_fp-ts@2.11.8:
+    resolution: {integrity: sha512-KqT68R2CTlkB2BAjeje105YeszMxWm4bhIueb8ipIpIOllCRUuBE86QoENsITfGYPynZ1Q37zgclSoiLvZ7rEA==}
+    peerDependencies:
+      fp-ts: ^2.9.5
+    dependencies:
+      fp-ts: 2.11.8
+    dev: false
 
   /@sinonjs/commons/1.8.3:
     resolution: {integrity: sha512-xkNcLAn/wZaX14RPlwizcKicDk9G3F8m2nU3L7Ukm5zBgTwiT0wsoFAHx9Jq56fJA1z/7uKGtCRu16sOUCLIHQ==}
@@ -1323,6 +1344,45 @@ packages:
       fp-ts: ^2.1.2
     dependencies:
       fp-ts: 2.11.8
+    dev: false
+
+  /fp-ts-node/6.0.0_715dae4bcc1fc445199ce821d5ba655c:
+    resolution: {integrity: sha512-NQIbGRDvjrrJBrAsD3dSRH6Ieyygk7+PVYgn0mqZNVE4YikGusYXHrAbHfusUcCqpVQRkb1UyTRCpXpCQP/zcQ==}
+    engines: {node: 14 || 16}
+    peerDependencies:
+      '@types/node': ^14.14.31
+      fp-ts: ^2.9.5
+      typescript: ^4.1.5
+    dependencies:
+      '@types/node': 17.0.21
+      fp-ts: 2.11.8
+      typescript: 4.6.2
+    dev: false
+
+  /fp-ts-quickcheck/0.2.0_newtype-ts@0.3.5:
+    resolution: {integrity: sha512-au5XpHCvuN8spyN0+ClhzvI8XaG+6zcUaWTn8+vsR/8AL3+SUY0OTy8QtRdMSqOPSyK+IlVYRPjhQFH3HkXnng==}
+    dependencies:
+      '@no-day/fp-ts-generators': 0.1.0-rc.4_fp-ts@2.11.8
+      '@no-day/fp-ts-lcg': 1.0.0_fp-ts@2.11.8
+      fp-ts: 2.11.8
+      fp-ts-contrib: 0.1.26_fp-ts@2.11.8
+      fp-ts-std: 0.13.1_bbaad6671b9aac5366add83000bfaa85
+      monocle-ts: 2.3.12_fp-ts@2.11.8
+    transitivePeerDependencies:
+      - newtype-ts
+    dev: false
+
+  /fp-ts-std/0.13.1_bbaad6671b9aac5366add83000bfaa85:
+    resolution: {integrity: sha512-dy/hmRFz+CcT4ekceKsVLqebrEgYwQAeyJ+s8p+g9DdCv+YSd9tle0uMipARGZQFUuHEkFglDxBKirwEqmBxBA==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      fp-ts: ^2.11.0
+      monocle-ts: ^2.3.0
+      newtype-ts: ^0.3.0
+    dependencies:
+      fp-ts: 2.11.8
+      monocle-ts: 2.3.12_fp-ts@2.11.8
+      newtype-ts: 0.3.5_fp-ts@2.11.8+monocle-ts@2.3.12
     dev: false
 
   /fp-ts/2.11.8:
