@@ -6,7 +6,7 @@ specifiers:
   fp-ts: ^2.11.8
   fp-ts-contrib: ^0.1.26
   fp-ts-node: ^6.0.0
-  fp-ts-quickcheck: ^0.2.0
+  fp-ts-quickcheck: ^0.3.0
   io-ts: ^2.2.16
   jest: ^27.5.1
   monocle-ts: ^2.3.12
@@ -20,7 +20,7 @@ dependencies:
   fp-ts: 2.11.8
   fp-ts-contrib: 0.1.26_fp-ts@2.11.8
   fp-ts-node: 6.0.0_715dae4bcc1fc445199ce821d5ba655c
-  fp-ts-quickcheck: 0.2.0_newtype-ts@0.3.5
+  fp-ts-quickcheck: 0.3.0
   io-ts: 2.2.16_fp-ts@2.11.8
   monocle-ts: 2.3.12_fp-ts@2.11.8
   newtype-ts: 0.3.5_fp-ts@2.11.8+monocle-ts@2.3.12
@@ -926,7 +926,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001314
+      caniuse-lite: 1.0.30001315
       electron-to-chromium: 1.4.82
       escalade: 3.1.1
       node-releases: 2.0.2
@@ -972,8 +972,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001314:
-    resolution: {integrity: sha512-0zaSO+TnCHtHJIbpLroX7nsD+vYuOVjl3uzFbJO1wMVbuveJA0RK2WcQA9ZUIOiO0/ArMiMgHJLxfEZhQiC0kw==}
+  /caniuse-lite/1.0.30001315:
+    resolution: {integrity: sha512-5v7LFQU4Sb/qvkz7JcZkvtSH1Ko+1x2kgo3ocdBeMGZSOFpuE1kkm0kpTwLtWeFrw5qw08ulLxJjVIXIS8MkiQ==}
     dev: true
 
   /chalk/2.4.2:
@@ -1359,8 +1359,8 @@ packages:
       typescript: 4.6.2
     dev: false
 
-  /fp-ts-quickcheck/0.2.0_newtype-ts@0.3.5:
-    resolution: {integrity: sha512-au5XpHCvuN8spyN0+ClhzvI8XaG+6zcUaWTn8+vsR/8AL3+SUY0OTy8QtRdMSqOPSyK+IlVYRPjhQFH3HkXnng==}
+  /fp-ts-quickcheck/0.3.0:
+    resolution: {integrity: sha512-HoP9W8XsB/3cNUVtpFz9qMblw8w6hUeItJb7mBD0R25TEpkuWDmQ22cKGZlXZQBvg9ge2hNZdOpmYDIo0HiUrQ==}
     dependencies:
       '@no-day/fp-ts-generators': 0.1.0-rc.4_fp-ts@2.11.8
       '@no-day/fp-ts-lcg': 1.0.0_fp-ts@2.11.8
@@ -1368,8 +1368,7 @@ packages:
       fp-ts-contrib: 0.1.26_fp-ts@2.11.8
       fp-ts-std: 0.13.1_bbaad6671b9aac5366add83000bfaa85
       monocle-ts: 2.3.12_fp-ts@2.11.8
-    transitivePeerDependencies:
-      - newtype-ts
+      newtype-ts: 0.3.5_fp-ts@2.11.8+monocle-ts@2.3.12
     dev: false
 
   /fp-ts-std/0.13.1_bbaad6671b9aac5366add83000bfaa85:
