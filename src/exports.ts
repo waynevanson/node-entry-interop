@@ -29,13 +29,13 @@ export interface ExportConditional
     Record<ConditionalProperty, ExportConditional | RootRelativePath>
   > {}
 
-export type ExportLabelledValue = RootRelativePath | ExportConditional
+export type ExportSubpathValue = RootRelativePath | ExportConditional
 
-export interface ExportLabelledConditional
-  extends Partial<Record<RootRelativePath, ExportLabelledValue>>,
-    Record<Default, ExportLabelledValue> {}
+export interface ExportSubpathConditional
+  extends Partial<Record<RootRelativePath, ExportSubpathValue>>,
+    Record<Default, ExportSubpathValue> {}
 
 export type Exports =
   | RootRelativePath
   | ExportConditional
-  | ExportLabelledConditional
+  | ExportSubpathConditional
