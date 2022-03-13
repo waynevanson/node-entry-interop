@@ -26,6 +26,9 @@ jobs:
         with:
           version: latest
           run_install: |
+            - recursive: false
+              cwd: "./"
+              args: [--frozen-lockfile]
 
       - run: pnpm exec jest
 
@@ -48,5 +51,8 @@ jobs:
         with:
           version: latest
           run_install: |
+            - recursive: false
+              cwd: "./"
+              args: [--frozen-lockfile]
 
       - run: pnpm run build
