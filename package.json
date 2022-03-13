@@ -6,6 +6,9 @@
   "author": "Wayne Van Son",
   "license": "MIT",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "run-p build:*",
     "build:esm": "tsc -p tsconfig.esm.json",
