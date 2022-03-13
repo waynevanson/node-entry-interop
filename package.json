@@ -2,7 +2,6 @@
   "name": "node-entry-interop",
   "version": "1.0.0",
   "description": "Bring the features of modern package.json imports and exports to your current projects",
-  "main": "index.js",
   "repository": "https://github.com/waynevanson/node-entry-interop",
   "author": "Wayne Van Son",
   "license": "MIT",
