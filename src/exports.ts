@@ -3,7 +3,7 @@ export type Main = RootRelativePath
 export type Types = RootRelativePath
 export type Default = "."
 
-export type ConditionalNodeJSKeys =
+export type ConditionalNodeProperty =
   | "node"
   | "node-addons"
   | "default"
@@ -22,7 +22,7 @@ export type ConditionsUser =
 
 export interface ExportConditional
   extends Partial<
-    Record<ConditionalNodeJSKeys, ExportConditional | RootRelativePath>
+    Record<ConditionalNodeProperty, ExportConditional | RootRelativePath>
   > {}
 
 export type ExportLabelledValue = RootRelativePath | ExportConditional
