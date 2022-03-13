@@ -12,7 +12,7 @@ export type ConditionalNodeProperty =
   | "import"
   | "require"
 
-export type ConditionsUser =
+export type ConditionalUserProperty =
   | "types"
   | "deno"
   | "browser"
