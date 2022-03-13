@@ -1,3 +1,6 @@
+import { pipe } from "fp-ts/lib/function"
+import * as d from "io-ts/Decoder"
+
 export type RootRelativePath = `./${string}${string}`
 export type Main = RootRelativePath
 export type Types = RootRelativePath
@@ -13,6 +16,7 @@ export type ConditionalNodeProperty =
   | "require"
 
 export type ConditionalUserProperty =
+  // should be first
   | "types"
   | "deno"
   | "browser"
@@ -44,3 +48,16 @@ export type Exports =
 // check if real file is there
 // check if proxy can be placed
 // skip if proxy is same as entry point
+// write proxy package.json where possible
+// add to files
+
+export const rootRelativePath = pipe(
+  d.string,
+  d.refine(
+    (string): string is RootRelativePath =>
+      string.startsWith("./") && string.length > 2,
+    "rootRelativePath"
+  )
+)
+
+export const exports_ = d.union(rootRelativePath)
