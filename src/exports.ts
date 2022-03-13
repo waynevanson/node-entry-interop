@@ -32,7 +32,7 @@ export interface ExportConditional
 export type ExportSubpathValue = RootRelativePath | ExportConditional
 
 export interface ExportSubpathConditional
-  extends Partial<Record<RootRelativePath, ExportSubpathValue>>,
+  extends Partial<Record<RootRelativePath, ExportSubpathValue | null>>,
     Record<Default, ExportSubpathValue> {}
 
 export type Exports =
