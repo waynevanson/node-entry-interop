@@ -20,9 +20,13 @@ export type ConditionalUserProperty =
   | "development"
   | "production"
 
+export type ConditionalProperty =
+  | ConditionalNodeProperty
+  | ConditionalUserProperty
+
 export interface ExportConditional
   extends Partial<
-    Record<ConditionalNodeProperty, ExportConditional | RootRelativePath>
+    Record<ConditionalProperty, ExportConditional | RootRelativePath>
   > {}
 
 export type ExportLabelledValue = RootRelativePath | ExportConditional
