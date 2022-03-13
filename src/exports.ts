@@ -1,4 +1,5 @@
-import { pipe } from "fp-ts/lib/function"
+import { either as E, readonlyRecord as RC } from "fp-ts"
+import { flow, pipe } from "fp-ts/lib/function"
 import * as d from "io-ts/Decoder"
 
 export type RootRelativePath = `./${string}${string}`
@@ -45,13 +46,6 @@ export type Exports =
   | ExportConditional
   | ExportSubpathConditional
 
-// read json file, decode,
-// check if real file is there
-// check if proxy can be placed
-// skip if proxy is same as entry point
-// write proxy package.json where possible
-// add to files
-
 export const rootRelativePath = pipe(
   d.string,
   d.refine(
@@ -60,6 +54,44 @@ export const rootRelativePath = pipe(
     "rootRelativePath"
   )
 )
+
+export const exportSubpathValue: d.Decoder<unknown, ExportSubpathValue> =
+  d.union(
+    rootRelativePath,
+    d.lazy("ExportConditional", () => exportConditional)
+  )
+
+export const exportSubpathConditional: d.Decoder<
+  unknown,
+  ExportSubpathConditional
+> = pipe(
+  d.record(d.nullable(exportSubpathValue)),
+  d.refine(
+    //@ts-expect-error
+    (
+      record
+      //@ts-expect-error
+    ): record is Partial<Record<RootRelativePath, ExportSubpathValue | null>> =>
+      RC.isEmpty(record) ||
+      pipe(
+        record,
+        RC.fromRecord,
+        RC.filterWithIndex(flow(rootRelativePath.decode, E.isLeft)),
+        RC.isEmpty
+      ),
+    "Partial<Record<RootRelativePath,ExportSubpathValue>>"
+  ),
+  d.intersect(
+    d.struct<Record<Default, ExportSubpathValue>>({ ".": exportSubpathValue })
+  )
+)
+
+// read json file, decode,
+// check if real file is there
+// check if proxy can be placed
+// skip if proxy is same as entry point
+// write proxy package.json where possible
+// add to files
 
 export const exportConditionalValue: d.Decoder<
   unknown,
@@ -84,4 +116,8 @@ export const exportConditional =
     types: exportConditionalValue,
   })
 
-export const exports_ = d.union(rootRelativePath, exportConditional)
+export const exports_: d.Decoder<unknown, Exports> = d.union(
+  rootRelativePath,
+  exportConditional,
+  exportSubpathConditional
+)
