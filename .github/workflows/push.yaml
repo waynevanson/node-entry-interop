@@ -1,0 +1,28 @@
+on: push
+
+name: Push
+
+jobs:
+  test:
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [12, 13, 14, 15, 16, 17]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@2.2.1
+        with:
+          version: latest
+          run_install: true
