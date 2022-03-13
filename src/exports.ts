@@ -24,6 +24,7 @@ export type ConditionalUserProperty =
   | "development"
   | "production"
 
+// todo - can be any string, but keep to these until someone asks
 export type ConditionalProperty =
   | ConditionalNodeProperty
   | ConditionalUserProperty
@@ -60,4 +61,27 @@ export const rootRelativePath = pipe(
   )
 )
 
-export const exports_ = d.union(rootRelativePath)
+export const exportConditionalValue: d.Decoder<
+  unknown,
+  ExportConditional | RootRelativePath
+> = d.union(
+  rootRelativePath,
+  d.lazy("ExportConditional", () => exportConditional)
+)
+
+export const exportConditional =
+  // todo - can be any property, but keep to these until someone asks
+  d.partial<Record<ConditionalProperty, ExportConditional | RootRelativePath>>({
+    "node-addons": exportConditionalValue,
+    browser: exportConditionalValue,
+    default: exportConditionalValue,
+    deno: exportConditionalValue,
+    development: exportConditionalValue,
+    import: exportConditionalValue,
+    node: exportConditionalValue,
+    production: exportConditionalValue,
+    require: exportConditionalValue,
+    types: exportConditionalValue,
+  })
+
+export const exports_ = d.union(rootRelativePath, exportConditional)
