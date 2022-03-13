@@ -25,8 +25,7 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: latest
-          run_install: |
-            - cwd: "./"
+      - run: pnpm install
 
       - run: pnpm exec jest
 
@@ -48,7 +47,6 @@ jobs:
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: latest
-          run_install: |
-            - cwd: "./"
 
+      - run: pnpm install
       - run: pnpm run build
